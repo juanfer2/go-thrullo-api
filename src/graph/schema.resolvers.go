@@ -7,8 +7,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/juanfer2/go-thrullo-api.git/graph/generated"
-	"github.com/juanfer2/go-thrullo-api.git/graph/model"
+	"github.com/juanfer2/go-thrullo-api.git/src/graph/generated"
+	"github.com/juanfer2/go-thrullo-api.git/src/graph/model"
 )
 
 func (r *mutationResolver) CreateTodo(ctx context.Context, input model.NewTodo) (*model.Todo, error) {

@@ -1,4 +1,4 @@
-package main
+package servers
 
 import (
 	"log"
@@ -7,13 +7,13 @@ import (
 
 	"github.com/99designs/gqlgen/graphql/handler"
 	"github.com/99designs/gqlgen/graphql/playground"
-	"github.com/juanfer2/go-thrullo-api.git/graph"
-	"github.com/juanfer2/go-thrullo-api.git/graph/generated"
+	"github.com/juanfer2/go-thrullo-api.git/src/graph"
+	"github.com/juanfer2/go-thrullo-api.git/src/graph/generated"
 )
 
 const defaultPort = "8080"
 
-func main() {
+func StartServer() {
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = defaultPort
