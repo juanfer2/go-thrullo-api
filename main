@@ -1,0 +1,20 @@
+package main
+
+import (
+	//"github.com/juanfer2/go-thrullo-api.git/src/servers"
+	"log"
+
+	"github.com/juanfer2/go-thrullo-api.git/src/cmd"
+)
+
+//documentation buffalo migrations
+//https://dev.to/alexmercedcoder/api-with-go-buffalo-in-2021-from-zero-to-deploy-5642
+//https://github.com/netlify/gotrue/blob/master/cmd/migrate_cmd.go
+//https://blog.logrocket.com/express-style-api-go-fiber/
+
+func main() {
+	//servers.StartServer()
+	if err := cmd.RootCommand().Execute(); err != nil {
+		log.Fatal(err)
+	}
+}

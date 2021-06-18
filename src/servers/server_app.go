@@ -7,6 +7,7 @@ import (
 
 	"github.com/99designs/gqlgen/graphql/handler"
 	"github.com/99designs/gqlgen/graphql/playground"
+	"github.com/juanfer2/go-thrullo-api.git/src/config"
 	"github.com/juanfer2/go-thrullo-api.git/src/graph"
 	"github.com/juanfer2/go-thrullo-api.git/src/graph/generated"
 )
@@ -14,6 +15,10 @@ import (
 const defaultPort = "8080"
 
 func StartServer() {
+	config.Conn()
+
+	// Migrate the schema
+	//db.AutoMigrate(&models.Task{}, &models.User{})
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = defaultPort

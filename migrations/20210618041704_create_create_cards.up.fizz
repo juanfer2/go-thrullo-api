@@ -1,0 +1,9 @@
+create_table("cards") {
+  t.Column("id", "integer", {primary: true})
+  t.Column("board_step_id", "integer")
+  t.Column("title", "string", {"size": 255})
+  t.Column("description", "text")
+  t.Column("step", "integer")
+
+  t.ForeignKey("board_step_id", {"board_steps": ["id"]}, {"on_delete": "cascade"})
+}

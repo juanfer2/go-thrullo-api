@@ -1,0 +1,8 @@
+create_table("board_steps") {
+  t.Column("id", "integer", {primary: true})
+  t.Column("board_id", "int")
+  t.Column("title", "string", {"size": 255})
+  t.Column("step", "integer")
+
+  t.ForeignKey("board_id", {"boards": ["id"]}, {"on_delete": "cascade"})
+}
