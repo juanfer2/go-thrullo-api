@@ -1,0 +1,4 @@
+input BoardInput {
+  title: String!
+  description: String!
+}

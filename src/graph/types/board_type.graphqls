@@ -1,6 +1,7 @@
 type Board {
   id: ID!
-  text: String!
-  done: Boolean!
-  user: User!
+  title: String!
+  description: String!
+  createdAt: String!
+  updateAt: String!
 }

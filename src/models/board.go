@@ -2,6 +2,8 @@ package models
 
 import (
 	"encoding/json"
+	"fmt"
+	"reflect"
 	"time"
 
 	"github.com/gobuffalo/pop/v5"
@@ -11,16 +13,21 @@ import (
 // User is used by pop to map your Users database table to your go code.
 type Board struct {
 	ID          int         `json:"id" db:"id"`
-	Title       string      `json:"first_name" db:"first_name"`
-	Description string      `json:"last_name" db:"first_name"`
+	Title       string      `json:"title" db:"title"`
+	Description string      `json:"description" db:"description"`
 	BoardUsers  []BoardUser `json:"board_users,omitempty" has_many:"board_users"`
 	CreatedAt   time.Time   `json:"created_at" db:"created_at"`
 	UpdatedAt   time.Time   `json:"updated_at" db:"updated_at"`
 }
 
+func (board Board) Type() {
+	r := reflect.TypeOf(board)
+	fmt.Println(r)
+}
+
 // TableName overrides the table name used by Pop.
 func (u Board) TableName() string {
-	return "Board"
+	return "boards"
 }
 
 // String is not required by pop and may be deleted

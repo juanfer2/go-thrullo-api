@@ -13,8 +13,21 @@ import (
 //https://blog.logrocket.com/express-style-api-go-fiber/
 
 func main() {
+	//CreateUser()
 	//servers.StartServer()
 	if err := cmd.RootCommand().Execute(); err != nil {
 		log.Fatal(err)
 	}
+
 }
+
+
+//func (r *mutationResolver) CreateTodo(ctx context.Context, input model.NewTodo) (*model.Todo, error) {
+//	panic(fmt.Errorf("not implemented"))
+//}
+//func (r *queryResolver) Todos(ctx context.Context) ([]*model.Todo, error) {
+//	panic(fmt.Errorf("not implemented"))
+//}
+//func (r *mutationResolver) CreateTest(ctx context.Context, input model.NewTodo) (*model.Todo, error) {
+//	panic(fmt.Errorf("not implemented"))
+//}

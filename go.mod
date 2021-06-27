@@ -7,6 +7,8 @@ require (
 	github.com/cockroachdb/cockroach-go v2.0.1+incompatible // indirect
 	github.com/d4l3k/go-pry v0.0.0-20181122210047-3e3af674fe57
 	github.com/fsnotify/fsnotify v1.4.9 // indirect
+	github.com/go-chi/chi v3.3.2+incompatible
+	github.com/go-chi/chi/v5 v5.0.3 // indirect
 	github.com/gobuffalo/buffalo-pop/v2 v2.3.0 // indirect
 	github.com/gobuffalo/envy v1.9.0 // indirect
 	github.com/gobuffalo/genny v0.6.0 // indirect
@@ -16,6 +18,7 @@ require (
 	github.com/gobuffalo/validate v2.0.4+incompatible // indirect
 	github.com/gobuffalo/validate/v3 v3.3.0
 	github.com/gofrs/uuid v4.0.0+incompatible // indirect
+	github.com/gorilla/websocket v1.4.2
 	github.com/howeyc/fsnotify v0.9.0 // indirect
 	github.com/jackc/pgproto3/v2 v2.1.0 // indirect
 	github.com/magiconair/properties v1.8.5 // indirect
@@ -27,7 +30,7 @@ require (
 	github.com/peterh/liner v1.2.1 // indirect
 	github.com/pilu/config v0.0.0-20131214182432-3eb99e6c0b9a // indirect
 	github.com/pilu/fresh v0.0.0-20190826141211-0fa698148017 // indirect
-	github.com/rs/cors v1.7.0 // indirect
+	github.com/rs/cors v1.7.0
 	github.com/sbinet/go-eval v0.0.0-20160521182218-34e015998e32 // indirect
 	github.com/sbinet/igo v0.0.0-20140926100642-77caab326f15 // indirect
 	github.com/sirupsen/logrus v1.8.1
@@ -36,6 +39,7 @@ require (
 	github.com/spf13/cobra v1.1.3
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
 	github.com/spf13/viper v1.7.1
+	github.com/thoas/go-funk v0.8.0 // indirect
 	github.com/vektah/gqlparser/v2 v2.1.0
 	golang.org/x/crypto v0.0.0-20210513164829-c07d793c2f9a // indirect
 	golang.org/x/sys v0.0.0-20210615035016-665e8c7367d1 // indirect
