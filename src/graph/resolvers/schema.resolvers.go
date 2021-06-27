@@ -9,6 +9,7 @@ import (
 
 	"github.com/juanfer2/go-thrullo-api.git/src/graph/generated"
 	"github.com/juanfer2/go-thrullo-api.git/src/models"
+	"github.com/juanfer2/go-thrullo-api.git/src/repositories"
 )
 
 func (r *mutationResolver) CreateBoard(ctx context.Context) (*string, error) {
@@ -20,7 +21,9 @@ func (r *queryResolver) Healt(ctx context.Context) (*string, error) {
 }
 
 func (r *queryResolver) ListBoard(ctx context.Context) ([]*models.Board, error) {
-	panic(fmt.Errorf("not implemented"))
+	boards := repositories.ListBoards()
+
+	return boards, nil
 }
 
 // Mutation returns generated.MutationResolver implementation.

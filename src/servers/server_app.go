@@ -9,8 +9,10 @@ import (
 	"github.com/99designs/gqlgen/graphql/playground"
 	"github.com/go-chi/chi"
 	"github.com/juanfer2/go-thrullo-api.git/src/config"
-	"github.com/juanfer2/go-thrullo-api.git/src/graph"
+
+	//"github.com/juanfer2/go-thrullo-api.git/src/graph"
 	"github.com/juanfer2/go-thrullo-api.git/src/graph/generated"
+	graph "github.com/juanfer2/go-thrullo-api.git/src/graph/resolvers"
 	"github.com/rs/cors"
 )
 

@@ -1,7 +1,7 @@
 type Board {
   id: ID!
-  title: String!
-  description: String!
-  createdAt: String!
-  updateAt: String!
+  title: String
+  description: String
+  createdAt: Time
+  updatedAt: Time
 }

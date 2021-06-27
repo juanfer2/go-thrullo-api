@@ -28,8 +28,6 @@ func ListBoards() []*models.Board {
 		log.Fatal(err)
 	}
 
-	log.Print(boards)
-
 	return boards
 }
 

@@ -6,6 +6,7 @@ import (
 
 	"github.com/gobuffalo/pop/v5"
 	"github.com/gobuffalo/validate/v3"
+	"github.com/juanfer2/go-thrullo-api.git/src/password_hash"
 )
 
 // User is used by pop to map your Users database table to your go code.
@@ -57,4 +58,14 @@ func (user *User) ValidateCreate(tx *pop.Connection) (*validate.Errors, error) {
 // This method is not required and may be deleted.
 func (user *User) ValidateUpdate(tx *pop.Connection) (*validate.Errors, error) {
 	return validate.NewErrors(), nil
+}
+
+func (user *User) HassPassword(password string) {
+	user.PasswordHash, _ = password_hash.HashPassword(password)
+}
+
+func (user *User) CheckPassword(password string) bool {
+	passwordHash := user.PasswordHash
+
+	return password_hash.CheckPasswordHash(password, passwordHash)
 }
