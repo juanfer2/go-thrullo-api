@@ -23,8 +23,10 @@ require (
 	github.com/jackc/pgproto3/v2 v2.1.0 // indirect
 	github.com/magiconair/properties v1.8.5 // indirect
 	github.com/mattn/go-tty v0.0.3 // indirect
+	github.com/mdempsky/gocode v0.0.0-20200405233807-4acdcbdea79d // indirect
 	github.com/mgutz/ansi v0.0.0-20200706080929-d51e80ef957d // indirect
 	github.com/mitchellh/mapstructure v1.4.1 // indirect
+	github.com/motemen/gore v0.5.2 // indirect
 	github.com/nsf/gocode v0.0.0-20190302080247-5bee97b48836 // indirect
 	github.com/pelletier/go-toml v1.9.3 // indirect
 	github.com/peterh/liner v1.2.1 // indirect
