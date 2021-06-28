@@ -264,9 +264,32 @@ func (ec *executionContext) introspectType(name string) (*introspection.Type, er
 }
 
 var sources = []*ast.Source{
+	{Name: "src/graph/directives.graphqls", Input: `# GQL Directives
+# This part is fairly necessary and is described in the gql documentation
+# https://gqlgen.com/config/
+directive @goModel(model: String, models: [String!]) on OBJECT
+    | INPUT_OBJECT
+    | SCALAR
+    | ENUM
+    | INTERFACE
+    | UNION
+
+directive @goField(forceResolver: Boolean, name: String) on INPUT_FIELD_DEFINITION
+    | FIELD_DEFINITION
+`, BuiltIn: false},
 	{Name: "src/graph/inputs/board_input.graphqls", Input: `input BoardInput {
   title: String!
   description: String!
+}
+`, BuiltIn: false},
+	{Name: "src/graph/mutations.graphqls", Input: `type Mutation {
+  createBoard: String,
+  #createBoard(inputBoard: BoardInput): Board
+}
+`, BuiltIn: false},
+	{Name: "src/graph/queries.graphqls", Input: `type Query {
+  Healt: String,
+  ListBoard: [Board]!
 }
 `, BuiltIn: false},
 	{Name: "src/graph/scalars/scalars.graphqls", Input: `# gqlgen supports some custom scalars out of the box
@@ -300,19 +323,16 @@ scalar Upload
 #   user: User!
 # }
 
-type Query {
-  Healt: String,
-  ListBoard: [Board]!
-}
+
 
 # input NewTodo {
 #   text: String!
 #   userId: String!
 # }
 
-type Mutation {
-  createBoard: String,
-  #createBoard(inputBoard: BoardInput): Board
+schema {
+    query: Query
+    mutation: Mutation
 }
 `, BuiltIn: false},
 	{Name: "src/graph/types/board_type.graphqls", Input: `type Board {
@@ -325,10 +345,10 @@ type Mutation {
 `, BuiltIn: false},
 	{Name: "src/graph/types/user_type.graphqls", Input: `type User {
   id: ID!
-  firstName: String!
-  lastName: String!
-  username: String!
-  email: String!
+  firstName: String
+  lastName: String
+  username: String
+  email: String
   createdAt: Time
   updatedAt: Time
 }
@@ -786,14 +806,11 @@ func (ec *executionContext) _User_firstName(ctx context.Context, field graphql.C
 		return graphql.Null
 	}
 	if resTmp == nil {
-		if !graphql.HasFieldError(ctx, fc) {
-			ec.Errorf(ctx, "must not be null")
-		}
 		return graphql.Null
 	}
 	res := resTmp.(string)
 	fc.Result = res
-	return ec.marshalNString2string(ctx, field.Selections, res)
+	return ec.marshalOString2string(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) _User_lastName(ctx context.Context, field graphql.CollectedField, obj *models.User) (ret graphql.Marshaler) {
@@ -821,14 +838,11 @@ func (ec *executionContext) _User_lastName(ctx context.Context, field graphql.Co
 		return graphql.Null
 	}
 	if resTmp == nil {
-		if !graphql.HasFieldError(ctx, fc) {
-			ec.Errorf(ctx, "must not be null")
-		}
 		return graphql.Null
 	}
 	res := resTmp.(string)
 	fc.Result = res
-	return ec.marshalNString2string(ctx, field.Selections, res)
+	return ec.marshalOString2string(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) _User_username(ctx context.Context, field graphql.CollectedField, obj *models.User) (ret graphql.Marshaler) {
@@ -856,14 +870,11 @@ func (ec *executionContext) _User_username(ctx context.Context, field graphql.Co
 		return graphql.Null
 	}
 	if resTmp == nil {
-		if !graphql.HasFieldError(ctx, fc) {
-			ec.Errorf(ctx, "must not be null")
-		}
 		return graphql.Null
 	}
 	res := resTmp.(string)
 	fc.Result = res
-	return ec.marshalNString2string(ctx, field.Selections, res)
+	return ec.marshalOString2string(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) _User_email(ctx context.Context, field graphql.CollectedField, obj *models.User) (ret graphql.Marshaler) {
@@ -891,14 +902,11 @@ func (ec *executionContext) _User_email(ctx context.Context, field graphql.Colle
 		return graphql.Null
 	}
 	if resTmp == nil {
-		if !graphql.HasFieldError(ctx, fc) {
-			ec.Errorf(ctx, "must not be null")
-		}
 		return graphql.Null
 	}
 	res := resTmp.(string)
 	fc.Result = res
-	return ec.marshalNString2string(ctx, field.Selections, res)
+	return ec.marshalOString2string(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) _User_createdAt(ctx context.Context, field graphql.CollectedField, obj *models.User) (ret graphql.Marshaler) {
@@ -2224,24 +2232,12 @@ func (ec *executionContext) _User(ctx context.Context, sel ast.SelectionSet, obj
 			}
 		case "firstName":
 			out.Values[i] = ec._User_firstName(ctx, field, obj)
-			if out.Values[i] == graphql.Null {
-				invalids++
-			}
 		case "lastName":
 			out.Values[i] = ec._User_lastName(ctx, field, obj)
-			if out.Values[i] == graphql.Null {
-				invalids++
-			}
 		case "username":
 			out.Values[i] = ec._User_username(ctx, field, obj)
-			if out.Values[i] == graphql.Null {
-				invalids++
-			}
 		case "email":
 			out.Values[i] = ec._User_email(ctx, field, obj)
-			if out.Values[i] == graphql.Null {
-				invalids++
-			}
 		case "createdAt":
 			out.Values[i] = ec._User_createdAt(ctx, field, obj)
 		case "updatedAt":
@@ -2851,6 +2847,42 @@ func (ec *executionContext) unmarshalOString2string(ctx context.Context, v inter
 
 func (ec *executionContext) marshalOString2string(ctx context.Context, sel ast.SelectionSet, v string) graphql.Marshaler {
 	return graphql.MarshalString(v)
+}
+
+func (ec *executionContext) unmarshalOString2ᚕstringᚄ(ctx context.Context, v interface{}) ([]string, error) {
+	if v == nil {
+		return nil, nil
+	}
+	var vSlice []interface{}
+	if v != nil {
+		if tmp1, ok := v.([]interface{}); ok {
+			vSlice = tmp1
+		} else {
+			vSlice = []interface{}{v}
+		}
+	}
+	var err error
+	res := make([]string, len(vSlice))
+	for i := range vSlice {
+		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithIndex(i))
+		res[i], err = ec.unmarshalNString2string(ctx, vSlice[i])
+		if err != nil {
+			return nil, err
+		}
+	}
+	return res, nil
+}
+
+func (ec *executionContext) marshalOString2ᚕstringᚄ(ctx context.Context, sel ast.SelectionSet, v []string) graphql.Marshaler {
+	if v == nil {
+		return graphql.Null
+	}
+	ret := make(graphql.Array, len(v))
+	for i := range v {
+		ret[i] = ec.marshalNString2string(ctx, sel, v[i])
+	}
+
+	return ret
 }
 
 func (ec *executionContext) unmarshalOString2ᚖstring(ctx context.Context, v interface{}) (*string, error) {

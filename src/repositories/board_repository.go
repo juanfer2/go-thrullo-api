@@ -7,8 +7,11 @@ import (
 	"github.com/juanfer2/go-thrullo-api.git/src/models"
 )
 
+type BoardRepository struct {
+}
+
 //func CreateUser(inputUser models.User) {
-func CreateBoard(inputBoard models.Board) (models.Board, error) {
+func (boardRepository BoardRepository) Create(inputBoard models.Board) (models.Board, error) {
 	db := database.PopDb()
 	_, err := db.ValidateAndSave(&inputBoard)
 
@@ -19,7 +22,7 @@ func CreateBoard(inputBoard models.Board) (models.Board, error) {
 	return inputBoard, err
 }
 
-func ListBoards() []*models.Board {
+func (boardRepository BoardRepository) List() []*models.Board {
 	db := database.PopDb()
 	boards := []*models.Board{}
 	err := db.All(&boards)

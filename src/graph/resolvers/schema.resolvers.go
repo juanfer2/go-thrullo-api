@@ -1,4 +1,4 @@
-package graph
+package resolvers
 
 // This file will be automatically regenerated based on the schema, any resolver implementations
 // will be copied through when generating and any unknown code will be moved to the end.
@@ -21,7 +21,8 @@ func (r *queryResolver) Healt(ctx context.Context) (*string, error) {
 }
 
 func (r *queryResolver) ListBoard(ctx context.Context) ([]*models.Board, error) {
-	boards := repositories.ListBoards()
+	boardRepository := repositories.BoardRepository{}
+	boards := boardRepository.List()
 
 	return boards, nil
 }

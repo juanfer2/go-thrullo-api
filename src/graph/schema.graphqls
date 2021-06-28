@@ -9,17 +9,14 @@
 #   user: User!
 # }
 
-type Query {
-  Healt: String,
-  ListBoard: [Board]!
-}
+
 
 # input NewTodo {
 #   text: String!
 #   userId: String!
 # }
 
-type Mutation {
-  createBoard: String,
-  #createBoard(inputBoard: BoardInput): Board
+schema {
+    query: Query
+    mutation: Mutation
 }
