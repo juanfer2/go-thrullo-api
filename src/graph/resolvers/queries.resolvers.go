@@ -9,6 +9,7 @@ import (
 
 	"github.com/juanfer2/go-thrullo-api.git/src/graph/generated"
 	"github.com/juanfer2/go-thrullo-api.git/src/models"
+	"github.com/juanfer2/go-thrullo-api.git/src/repositories"
 )
 
 func (r *queryResolver) Healt(ctx context.Context) (*string, error) {
