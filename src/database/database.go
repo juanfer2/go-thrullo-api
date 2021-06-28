@@ -9,7 +9,7 @@ import (
 func PopDb() *pop.Connection {
 	pop.Debug = true
 
-	db, err := pop.Connect("development")
+	db, err := pop.Connect("production")
 
 	if err != nil {
 		log.Panic(err)
