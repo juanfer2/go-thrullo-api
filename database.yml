@@ -10,4 +10,4 @@ test:
   url: {{envOr "TEST_DATABASE_URL" "postgres://postgres:1234@127.0.0.1:5432/go-api?sslmode=disable"}}
 
 production:
-  url: {{envOr "DATABASE_URL" "postgres://postgres:postgres@127.0.0.1:5432/thrullo_api_production?sslmode=disable"}}
+  url: {{envOr "DATABASE_URL" "postgres://xwhvxzaqqchxho:f19cc806ae09d4bef1aeaad2c6baf44efcfa3f8c977a897132c0ac3095f12a92@ec2-54-158-232-223.compute-1.amazonaws.com:5432/dcpm3m23il07ae?sslmode=disable"}}
