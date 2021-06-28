@@ -1,4 +1,0 @@
-type Mutation {
-  createBoard: String,
-  #createBoard(inputBoard: BoardInput): Board
-}

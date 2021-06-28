@@ -282,16 +282,6 @@ directive @goField(forceResolver: Boolean, name: String) on INPUT_FIELD_DEFINITI
   description: String!
 }
 `, BuiltIn: false},
-	{Name: "src/graph/mutations.graphqls", Input: `type Mutation {
-  createBoard: String,
-  #createBoard(inputBoard: BoardInput): Board
-}
-`, BuiltIn: false},
-	{Name: "src/graph/queries.graphqls", Input: `type Query {
-  Healt: String,
-  ListBoard: [Board]!
-}
-`, BuiltIn: false},
 	{Name: "src/graph/scalars/scalars.graphqls", Input: `# gqlgen supports some custom scalars out of the box
 # see: https://github.com/99designs/gqlgen/blob/master/docs/content/reference/scalars.md
 
@@ -330,9 +320,14 @@ scalar Upload
 #   userId: String!
 # }
 
-schema {
-    query: Query
-    mutation: Mutation
+type Query {
+  Healt: String,
+  ListBoard: [Board]!
+}
+
+type Mutation {
+  createBoard: String,
+  #createBoard(inputBoard: BoardInput): Board
 }
 `, BuiltIn: false},
 	{Name: "src/graph/types/board_type.graphqls", Input: `type Board {

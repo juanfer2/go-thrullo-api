@@ -16,7 +16,12 @@
 #   userId: String!
 # }
 
-schema {
-    query: Query
-    mutation: Mutation
+type Query {
+  Healt: String,
+  ListBoard: [Board]!
+}
+
+type Mutation {
+  createBoard: String,
+  #createBoard(inputBoard: BoardInput): Board
 }
