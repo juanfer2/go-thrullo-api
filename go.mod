@@ -5,7 +5,7 @@ go 1.15
 require (
 	github.com/99designs/gqlgen v0.13.0
 	github.com/cockroachdb/cockroach-go v2.0.1+incompatible // indirect
-	github.com/d4l3k/go-pry v0.0.0-20181122210047-3e3af674fe57
+	github.com/d4l3k/go-pry v0.0.0-20181122210047-3e3af674fe57 // indirect
 	github.com/fsnotify/fsnotify v1.4.9 // indirect
 	github.com/go-chi/chi v3.3.2+incompatible
 	github.com/go-chi/chi/v5 v5.0.3 // indirect
@@ -23,7 +23,7 @@ require (
 	github.com/gobuffalo/validate v2.0.4+incompatible // indirect
 	github.com/gobuffalo/validate/v3 v3.3.0
 	github.com/gofrs/uuid v4.0.0+incompatible // indirect
-	github.com/gorilla/websocket v1.4.2
+	github.com/gorilla/websocket v1.4.2 // indirect
 	github.com/howeyc/fsnotify v0.9.0 // indirect
 	github.com/jackc/pgproto3/v2 v2.1.0 // indirect
 	github.com/magiconair/properties v1.8.5 // indirect
