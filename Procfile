@@ -1,1 +1,1 @@
-web: github.com/juanfer2/go-thrullo-ap
+web: github.com/juanfer2/go-thrullo-api.git
