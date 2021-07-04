@@ -1,5 +1,5 @@
 {
-	"ImportPath": ".",
+	"ImportPath": "github.com/juanfer2/go-thrullo-api.git",
 	"GoVersion": "go1.15",
 	"GodepVersion": "v80",
 	"Packages": [
