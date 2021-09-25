@@ -1,5 +1,6 @@
 module github.com/juanfer2/go-thrullo-api.git
 
+// +heroku goVersion go1.15
 go 1.15
 
 require (
